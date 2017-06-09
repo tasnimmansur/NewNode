@@ -15,6 +15,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 mongoose.connect('mongodb://localhost/dbs');
 
 var Schema = new mongoose.Schema({
@@ -33,12 +35,6 @@ app.post('/data', function(req, res){
         else    res.send('Successfully inserted!');
     });
 });
-
-/*var server = app.listen(8082, function () {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log("Example app listening at http://%s:%s", host, port)
-});*/
 
 var server = http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
